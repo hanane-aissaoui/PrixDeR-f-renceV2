@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analyse des Offres</title>
+    <link rel="icon" href="images/icon.png" type="image/png">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo">
+                <img src="images/logo.png" alt="Logo" class="logo-img">
+                <p class="logo-text">L'Agence Régional d'Exécution des Projets Région de l'Oriental</p>
+            </div>
+            <h1>Evaluation des offres financières des concurrents</h1>
+            <div class="nr-obj">
+                <label for="nr">N°</label>
+                <input type="text" id="nt" required>
+                <label for="objectif">relatif à</label>
+                <input type="text" id="obj" required>
+            </div>
+            <div class="radio-buttons">
+                <p class="radio-buttons-txt">Nature de Prestation</p>
+                <label>
+                    <input type="radio" name="type" value="travaux" id="travaux"> Travaux
+                </label>
+                <label>
+                    <input type="radio" name="type" value="autres" id="services"> Autres
+                </label>
+            </div>
+            <div class="estimation">
+                <label for="estimation">Estimation</label>
+                <input type="number" id="estimation" required>
+            </div>
+        </header>
+
+        <div class="competitors-section">
+            <table class="competitors-table">
+                <thead>
+                    <tr>
+                        <!-- En-têtes de colonnes si nécessaires -->
+                    </tr>
+                </thead>
+                <tbody id="competitors-list">
+                    <!-- Contenu dynamique ici -->
+                </tbody>
+            </table>
+            <button class="add-competitor" id="add-competitor-btn">Ajouter Concurrent</button>
+        </div>
+
+        <div class="results" id="results" style="display: none;">
+            <table id="offres-exces" class="results-table">
+                <thead>
+                    <tr>
+                        <th colspan="2">Offres Excessive</th>
+                    </tr>
+                </thead>
+                <tbody id="exces-list">
+                    <!-- Contenu dynamique ici -->
+                </tbody>
+            </table>
+            <table id="offres-anorm-basse" class="results-table">
+                <thead>
+                    <tr>
+                        <th colspan="2">Offres Anormalement Basse</th>
+                    </tr>
+                </thead>
+                <tbody id="anorm-basse-list">
+                    <!-- Contenu dynamique ici -->
+                </tbody>
+            </table>
+            <div class="reference-price">
+                <span>Prix Référence:</span>
+                <span class="price" id="reference-price">-</span>
+            </div>
+            <h2>Classement des Offres</h2>
+            <table id="classement-offres" class="results-table">
+                <thead>
+                    <tr>
+                        <th>Rang</th>
+                        <th>Nom du Concurrent</th>
+                        <th>Offre Financière</th>
+                        <th>Écart</th>
+                    </tr>
+                </thead>
+                <tbody id="classement-list">
+                    <!-- Contenu dynamique ici -->
+                </tbody>
+            </table>
+            <!-- Message pour l'offre la plus proche du prix de référence -->
+            <div id="closest-offer-message" style="margin-top: 20px; font-weight: bold;"></div>
+        </div>
+        
+        <footer>
+            <div class="footer-buttons">
+                <button id="calculate-btn" class="calculate">Calculer</button>
+                <button id="initialize-btn" class="initialize">Initialiser</button>
+            </div>
+            <div class="print-enreg">
+                <button id="print-btn" class="print">Imprimer</button>
+                <button id="save-btn" class="save">Enregistrer</button>
+            </div>
+        </footer>
+                <button  id="menu" class="menu-btn" onclick="document.getElementById('sidebar').style.display='flex'">
+    <i class="fas fa-bars"></i>
+</button>
+
+        <div class="sidebar" id="sidebar" style="display: none;">
+    <div class="sidebar-item" id="toggle-search">
+        <i class="fas fa-search"></i>
+        <span>Rechercher</span>
+    </div>
+    <div class="sidebar-item" onclick="window.location.href='index.html'">
+        <i class="fas fa-home"></i>
+        <span>Accueil</span>
+    </div>
+        <div class="sidebar-item liste-item" onclick="window.location.href='index2.html'">
+        <i class="fas fa-edit"></i>
+        <span>Liste</span>
+</div>
+
+</div>
+
+   <div id="search-container" class="search-container">
+    <input type="text" id="search-numero" placeholder="Entrer N° du projet">
+    <button id="search-btn">Rechercher</button>
+</div>
+
+
+    </div>
+
+    <div class="modal" id="modal">
+        <div class="modal-content">
+            <span class="close-btn" id="close-modal-btn">&times;</span>
+            <form id="competitor-form">
+                <label for="competitor-name">Le nom de concurrent</label>
+                <input type="text" id="competitor-name" required>
+                <label for="competitor-bid">L'offre financière</label>
+                <input type="number" id="competitor-bid" step="0.01" required>
+                <button type="submit">Ajouter</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

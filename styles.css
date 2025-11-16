@@ -1,0 +1,534 @@
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    
+    background-image: url('images/background1.png');
+    background-size: cover; /* pour remplir toute la surface */
+    background-repeat: repeat;
+    background-position: center;
+
+    padding: 20px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+
+@media (max-width: 768px) {
+.container {
+    width: 95%; /* Augmente la largeur sur les écrans plus petits */
+    padding: 15px; /* Ajuste le padding sur les écrans plus petits */
+}
+}
+
+@media (max-width: 480px) {
+.container {
+    width: 100%; /* Utilise toute la largeur disponible sur les très petits écrans */
+    padding: 10px; /* Réduit le padding pour les très petits écrans */
+}
+}
+
+
+header .logo {
+margin-bottom: 20px;
+}
+.logo {
+display: flex;
+flex-direction: column;
+align-items: center;
+margin-bottom: 20px;
+}
+
+.logo-img {
+max-width: 100px;
+height: auto;
+}
+
+.logo-text {
+font-size: 24px;
+font-weight: bold;
+margin-top: 10px;
+color: #145a8d;
+}
+
+
+header h1 {
+color: #c64a11;
+margin-bottom: 20px;
+text-align: center;
+}
+
+
+.nr-obj label {
+/*display: block;*/
+font-size: 18px;
+Font-weight: bold;
+margin-bottom: 9px;
+
+}
+.nr-obj {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px; /* espace entre les champs */
+    margin-bottom: 20px;
+    color: #145a8d;
+}
+
+
+.radio-buttons {
+display: flex;
+align-items: center; /* Aligne les éléments verticalement au centre */
+justify-content: center;
+margin-bottom: 20px;
+padding-top: 20px;
+}
+
+.radio-buttons-txt {
+font-size: 20px;
+font-weight: bold;
+margin-right: 10px; /* Espace entre le texte et les boutons radio */
+color: #145a8d;
+}
+
+.radio-buttons label {
+display: flex;
+align-items: center; /* Aligne le texte du label et le bouton radio */
+margin-right: 15px; /* Espace entre les labels */
+}
+
+.radio-buttons input[type="radio"] {
+margin-right: 5px; /* Espace entre le bouton radio et le texte du label */
+}
+.radio-buttons label {
+margin-right: 20px;
+}
+
+.estimation {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+    color: #145a8d;
+}
+
+
+.estimation label {
+/*display: block;*/
+font-size: 18px;
+Font-weight: bold;
+margin-bottom: 9px;
+
+}
+
+.estimation input {
+width: 30%;
+padding: 6px;
+border: 2px solid #ccc;
+border-radius: 8px;
+font-size: 17px;
+color: #0e630e;
+font-weight: bold;
+
+}
+
+.competitors-section {
+margin: 20px 0;
+}
+
+.add-competitor {
+padding: 10px 20px;
+background-color: #145a8d;
+color: #fff;
+border: none;
+border-radius: 4px;
+cursor: pointer;
+float: right;
+margin-top: 10px; /* Pour ajouter de l'espace au-dessus si nécessaire */
+float: right;
+}
+.competitors-table, .results-table {
+width: 100%;
+border-collapse: collapse;
+margin: 0 auto;
+background-color: #fff;
+box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+border-radius: 8px;
+overflow: hidden;
+}
+
+.competitors-table th, .competitors-table td,
+.results-table th, .results-table td {
+padding: 12px;
+text-align: left;
+}
+
+.competitors-table th, .results-table thead {
+background-color: #145a8d;
+color: #fff;
+}
+
+.competitors-table tr:nth-child(even), .results-table tr:nth-child(even) {
+background-color: #f9f9f9;
+}
+
+.competitors-table tr:last-child td, .results-table tr:last-child {
+border-bottom: none;
+}
+
+.results {
+display: flex;
+justify-content: center; /* Centre les tableaux */
+gap: 20px; /* Espacement entre les tableaux */
+}
+
+.results-table {
+width: 45%; /* Assurez-vous que les tableaux prennent chacun environ la moitié de la largeur disponible */
+table-layout: fixed; /* Force une largeur fixe des colonnes */
+word-break: break-word; /* Gère les mots longs */
+}
+
+.results-table th, .results-table td {
+overflow: hidden; /* Cache le débordement */
+white-space: nowrap; /* Empêche le texte de s'étendre sur plusieurs lignes */
+text-overflow: ellipsis; /* Ajoute des points de suspension pour le texte débordant */
+}
+
+.results-table .name-column {
+width: 150px; /* Largeur fixe pour la colonne des noms */
+}
+
+.results-table .offer-column {
+width: 100px; /* Largeur fixe pour la colonne des offres */
+}
+
+.results-table .gap-column {
+width: auto; /* Ajuste automatiquement pour occuper l'espace restant */
+}
+
+
+
+
+.reference-price {
+font-size: 24px;
+font-weight: bold;
+color: #c64a11;
+margin-bottom: 20px;
+text-align: center;
+}
+
+.price {
+color: #0e630e;
+}
+
+footer {
+display: flex;
+flex-direction: column;
+align-items: center; /* Aligne les éléments horizontalement au centre */
+margin-top: 80px;
+justify-content: center; /* Centre les boutons horizontalement */
+gap: 20px; /* Augmente l'espace entre les boutons */
+
+}
+
+.footer-buttons {
+display: flex;
+justify-content: center; /* Centrer les boutons */
+gap: 20px; /* Espacement entre les boutons */
+padding: 10px;
+width: 50%;
+float: left;
+margin-left: 40px;
+margin-bottom: 20px; /* Espace entre ces boutons et le bouton "Imprimer" */
+
+}
+
+footer .calculate, footer .initialize {
+background-color: #e3e2e2;
+color: #000;
+border: none;
+border-radius: 4px;
+
+padding: 10px;
+width: 48%; /* Largeur des boutons */
+
+
+cursor: pointer;
+}
+
+footer .calculate:hover, footer .initialize:hover {
+background-color: #ccc;
+}
+
+.print-enreg {
+display: flex;
+justify-content: flex-end; /* Aligne le bouton "Imprimer" à droite */
+width: 100%;
+}
+
+footer .print {
+background-color: #4CAF50;
+color: white;
+padding: 10px 20px;
+border: none;
+border-radius: 5px;
+cursor: pointer;
+}
+
+footer .print:hover {
+background-color: #45a049;
+}
+footer .save {
+background-color: #4CAF50;
+color: white;
+padding: 10px 20px;
+border: none;
+border-radius: 5px;
+cursor: pointer;
+margin-left: 20px;
+}
+
+footer .save:hover {
+background-color: #45a049;
+}
+h2 {
+font-size: 24px;
+color: #c64a11;
+margin-top: 20px;
+margin-bottom: 10px;
+float: left;
+
+}
+
+.search-container {
+    display: none;
+    position: fixed;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 250px;
+    background-color: #ffffff;
+    border-right: 1px solid #ccc;
+    box-shadow: 2px 0 5px rgba(0,0,0,0.3);
+    padding: 20px;
+    transition: transform 0.3s ease;
+    transform: translateX(-100%);
+}
+
+.menu-btn {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    background-color: #c64a11;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    font-size: 20px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+    z-index: 1000; /* pour rester au-dessus du reste */
+    transition: background-color 0.3s ease;
+}
+
+.menu-btn:hover {
+    background-color: #a03b0e;
+}
+
+
+.search-container.active {
+    display: block;
+    transform: translateX(0);
+    
+}
+
+.search-container input {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    background-color: #ffffff;
+    color: #000;
+}
+
+.search-container button {
+    width: 100%;
+    padding: 8px;
+    background: #ffdd00;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
+    color: #000;
+}
+
+
+.modal{
+display: none;
+position: fixed;
+z-index: 1;
+left: 0;
+top: 0;
+width: 100%;
+height: 100%;
+overflow: auto;
+background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-content {
+background-color: #fff;
+margin: 15% auto;
+padding: 20px;
+border: 1px solid #888;
+width: 80%;
+max-width: 400px;
+border-radius: 8px;
+position: relative;
+}
+
+.close-btn {
+color: #aaa;
+float: right;
+font-size: 28px;
+font-weight: bold;
+cursor: pointer;
+}
+
+.close-btn:hover,
+.close-btn:focus {
+color: #000;
+text-decoration: none;
+cursor: pointer;
+}
+
+.modal-content label {
+display: block;
+margin-bottom: 8px;
+}
+
+.modal-content input {
+margin-bottom: 20px;
+padding: 10px;
+border: 1px solid #ddd;
+border-radius: 4px;
+width: calc(100% - 22px);
+}
+
+.modal-content button {
+background-color: #145a8d;
+color: #fff;
+border: none;
+padding: 10px;
+border-radius: 4px;
+cursor: pointer;
+width: 100%;
+}
+
+
+/* Styles pour la modal */
+.modal {
+display: none; /* Cacher la modal par défaut */
+position: fixed;
+z-index: 1;
+left: 0;
+top: 0;
+width: 100%;
+height: 100%;
+overflow: auto;
+background-color: rgb(0,0,0);
+background-color: rgba(0,0,0,0.4);
+padding-top: 60px;
+}
+
+.modal-content {
+background-color: #fefefe;
+margin: 5% auto;
+padding: 20px;
+border: 1px solid #888;
+width: 80%;
+}
+
+.close-btn {
+color: #aaa;
+float: right;
+font-size: 28px;
+font-weight: bold;
+}
+
+.close-btn:hover,
+.close-btn:focus {
+color: black;
+text-decoration: none;
+cursor: pointer;
+}
+
+/* Autres styles pour les tables et sections */
+.results-table {
+width: 100%;
+border-collapse: collapse;
+margin-bottom: 20px;
+}
+
+.results-table th,
+.results-table td {
+border: 1px solid #ddd;
+padding: 8px;
+}
+
+.results-table th {
+background-color: #145a8d;
+}
+
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 90px;
+    height: 100vh;
+    background-color: white;
+    border-right: 1px solid #ccc;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 20px;
+    z-index: 1000;
+}
+
+.sidebar-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 25px 0;
+    font-size: 14px;
+    color: #000;
+    cursor: pointer;
+}
+
+.sidebar-item i {
+    font-size: 20px;
+    margin-bottom: 5px;
+}
+
+.sidebar-item:hover {
+    color: #007BFF;
+}
+
+
+
+
+
+
+
+

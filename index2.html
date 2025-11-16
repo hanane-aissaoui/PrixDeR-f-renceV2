@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Liste des Projets</title>
+    <link rel="icon" href="images/icon.png" type="image/png">
+    <link rel="stylesheet" href="style2.css">
+</head>
+<body>
+    <h1>Liste des Projets</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>N° Projet</th>
+                <th>Objectif</th>
+                <th>Nature de Prestation</th>
+                <th>Estimation (MAD)</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody id="project-table-body">
+            <!-- Données insérées ici -->
+        </tbody>
+    </table>
+    <div id="error-message" class="error"></div>
+
+  <script>
+function traduireType(code) {
+    if (code === 'T') return 'Travaux';
+    if (code === 'A') return 'Autres';
+    return code;
+}
+
+// Récupération de la liste
+fetch('recupererListe.php')
+    .then(res => res.json())
+    .then(data => {
+        if (!data.success) {
+            document.getElementById('error-message').textContent = 'Erreur : ' + data.message;
+            return;
+        }
+
+        const tbody = document.getElementById('project-table-body');
+
+        data.projects.forEach(p => {
+            const row = document.createElement('tr');
+            row.innerHTML = `
+                <td>${p.numero}</td>
+                <td>${p.objectif}</td>
+                <td>${traduireType(p.type_prestation)}</td>
+                <td>${p.estimation}</td>
+                <td>
+                    <button class="modifier-btn" data-numero="${p.numero}" style="border:none; background:none; padding:0; margin-right:10px;">
+                        <img src="images/pencil.png" style="width:30px; height:30px; border:none;">
+                    </button>
+                    <button class="delete-btn" data-numero="${p.numero}" style="border:none; background:none; padding:0;">
+                        <img src="images/delete.png" style="width:30px; height:30px;">
+                    </button>
+                </td>
+            `;
+            tbody.appendChild(row);
+        });
+
+        // Boutons Modifier
+        document.querySelectorAll('.modifier-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const numero = btn.getAttribute('data-numero');
+                localStorage.setItem('numeroProjet', numero);
+                window.location.href = 'index.html';
+            });
+        });
+
+        // Boutons Delete avec confirmation
+        document.querySelectorAll('.delete-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const numero = btn.getAttribute('data-numero');
+                const confirmation = confirm(`Voulez-vous vraiment supprimer le projet N° ${numero} ?`);
+                if (confirmation) {
+                    // Appel fetch pour supprimer dans la base
+                    fetch('supprimerProjet.php', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({ numero })
+                    })
+                    .then(res => res.json())
+                    .then(data => {
+                        if (data.success) {
+                            alert(`Projet N° ${numero} supprimé avec succès.`);
+                            // Supprimer la ligne du tableau
+                            btn.closest('tr').remove();
+                        } else {
+                            alert(`Erreur serveur : ${data.message}`);
+                        }
+                    })
+                    .catch(err => {
+                        console.error('Erreur fetch:', err);
+                        alert('Erreur de communication avec le serveur.');
+                    });
+                }
+            });
+        });
+
+    })
+    .catch(err => {
+        console.error('Erreur fetch:', err);
+        document.getElementById('error-message').textContent = 'Erreur de connexion au serveur';
+    });
+</script>
+
+
+
+</body>
+</html>
